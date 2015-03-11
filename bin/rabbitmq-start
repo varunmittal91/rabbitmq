@@ -2,4 +2,10 @@
 
 ulimit -n 1024
 chown -R rabbitmq:rabbitmq /data
-exec rabbitmq-server $@
+
+if [ -f /var/lib/rabbitmq/.erlang.cookie ]; then
+    chown rabbitmq:rabbitmq /var/lib/rabbitmq/.erlang.cookie
+    chmod 400 /var/lib/rabbitmq/.erlang.cookie
+fi
+
+rabbitmq-server $@

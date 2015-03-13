@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ulimit -n 1024
+ulimit -n 10240
 chown -R rabbitmq:rabbitmq /data
 
 if [ -f /var/lib/rabbitmq/.erlang.cookie ]; then
